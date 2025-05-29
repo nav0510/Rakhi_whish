@@ -1,0 +1,97 @@
+ <!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>शुभ रक्षाबंधन</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Baloo 2', cursive;
+      background: linear-gradient(#2e0303, #000);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    .greeting-image {
+      width: 80%;
+      max-width: 500px;
+      margin-top: 30px;
+      animation: fadeInZoom 2s ease-out forwards;
+      opacity: 0;
+    }
+    @keyframes fadeInZoom {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    .name-box {
+      margin-top: 40px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 70%;
+      max-width: 300px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+    .whatsapp-share {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 12px 24px;
+      background: #25d366;
+      border-radius: 30px;
+      color: #fff;
+      font-size: 18px;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .whatsapp-share:hover {
+      transform: scale(1.05);
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Audio -->
+  <audio autoplay loop>
+    <source src="SachetParampara.mp3" type="audio/mpeg">
+    आपका ब्राउज़र ऑडियो प्ले करने में सक्षम नहीं है।
+  </audio>
+
+  <!-- Greeting Image -->
+  <img src="ganesha-rakhi.png" alt="Ganesh Raksha Bandhan Wishes" class="greeting-image" />
+
+  <!-- Name Entry & Share Button -->
+  <div class="name-box">
+    <input type="text" id="userName" placeholder="अपना नाम दर्ज करें" />
+    <br><br>
+    <a id="shareBtn" href="#" class="whatsapp-share" target="_blank">शेयर करें</a>
+  </div>
+
+  <!-- Share Script -->
+  <script>
+    document.getElementById("shareBtn").addEventListener("click", function () {
+      const name = document.getElementById("userName").value.trim();
+      if (name.length > 0) {
+        const message = encodeURIComponent(name + " ने आपको रक्षाबंधन की शुभकामनाएं भेजी हैं! 🌸✨");
+        const whatsappUrl = `https://wa.me/?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+      } else {
+        alert("कृपया अपना नाम दर्ज करें।");
+      }
+    });
+  </script>
+</body>
+</html>
