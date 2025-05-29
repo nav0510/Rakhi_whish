@@ -70,28 +70,31 @@
     आपका ब्राउज़र ऑडियो प्ले करने में सक्षम नहीं है।
   </audio>
 
-  <!-- Greeting Image -->
-  <img src="ganesha-rakhi.png" alt="Ganesh Raksha Bandhan Wishes" class="greeting-image" />
-
-  <!-- Name Entry & Share Button -->
-  <div class="name-box">
-    <input type="text" id="userName" placeholder="अपना नाम दर्ज करें" />
-    <br><br>
-    <a id="shareBtn" href="#" class="whatsapp-share" target="_blank">शेयर करें</a>
-  </div>
-
-  <!-- Share Script -->
   <script>
-    document.getElementById("shareBtn").addEventListener("click", function () {
-      const name = document.getElementById("userName").value.trim();
-      if (name.length > 0) {
-        const message = encodeURIComponent(name + " ने आपको रक्षाबंधन की शुभकामनाएं भेजी हैं! 🌸✨");
-        const whatsappUrl = `https://wa.me/?text=${message}`;
-        window.open(whatsappUrl, '_blank');
-      } else {
-        alert("कृपया अपना नाम दर्ज करें।");
-      }
-    });
-  </script>
+  // Audio autoplay
+  window.addEventListener('load', () => {
+    const audio = document.getElementById('bgAudio');
+    const tryPlay = () => {
+      audio.play().catch(() => {});
+    };
+    tryPlay();
+    document.body.addEventListener('click', tryPlay, { once: true });
+    document.getElementById("userName").addEventListener('input', tryPlay, { once: true });
+  });
+
+  // WhatsApp Sharing
+  document.getElementById("shareBtn").addEventListener("click", function (e) {
+    e.preventDefault(); // prevent default anchor
+    const name = document.getElementById("userName").value.trim();
+    if (name.length > 0) {
+      const siteLink = window.location.href;
+      const message = encodeURIComponent(`${name} ने आपको रक्षाबंधन की शुभकामनाएं भेजी हैं! 🌸✨\n${siteLink}`);
+      const whatsappUrl = `https://wa.me/?text=${message}`;
+      window.open(whatsappUrl, '_blank');
+    } else {
+      alert("कृपया अपना नाम दर्ज करें।");
+    }
+  });
+</script>
 </body>
 </html>
