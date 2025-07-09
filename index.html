@@ -22,18 +22,12 @@
       opacity: 0;
     }
     @keyframes fadeInZoom {
-      0% {
-        transform: scale(0.8);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
     .popup-box {
       display: none;
-      margin-top: 40px;
+      margin-top: 30px;
       animation: fadeIn 1s ease-out forwards;
     }
     @keyframes fadeIn {
@@ -63,6 +57,10 @@
     .whatsapp-share:hover {
       transform: scale(1.05);
     }
+    .ad-container {
+      margin-top: 40px;
+      padding: 10px;
+    }
     audio {
       display: none;
     }
@@ -77,15 +75,19 @@
   </audio>
 
   <!-- Greeting Image -->
-  <!-- Name Entry & Share Button -->
-  <div class="name-box">
+  <img src="ganesha-rakhi.png" alt="Ganesh Raksha Bandhan Wishes" class="greeting-image" />
+
+  <!-- Name Entry Box -->
+  <div id="popup" class="popup-box">
     <input type="text" id="userName" placeholder="अपना नाम दर्ज करें" />
     <br><br>
     <a id="shareBtn" href="#" class="whatsapp-share" target="_blank">शेयर करें</a>
   </div>
- <!-- Ad Block (optional) -->
-    <script async="async" data-cfasync="false" src="//pl27122862.profitableratecpm.com/37c117dd428df5727655e56d292ed1c7/invoke.js"></script>
-<div id="container-37c117dd428df5727655e56d292ed1c7"></div>
+
+  <!-- ✅ Ad Container (below name and button) -->
+  <div class="ad-container">
+    <script type='text/javascript' src='https://www.profitableratecpm.com/mpis79pimg?key=2098ff8133dd140d21dc23834535d2f3'></script>
+  </div>
 
   <!-- JavaScript Logic -->
   <script>
@@ -118,5 +120,6 @@
       }
     });
   </script>
+
 </body>
 </html>
