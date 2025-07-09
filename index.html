@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="hi">
 <head>
   <meta charset="UTF-8" />
@@ -31,8 +31,14 @@
         opacity: 1;
       }
     }
-    .name-box {
-      margin-top: 30px;
+    .popup-box {
+      display: none;
+      margin-top: 40px;
+      animation: fadeIn 1s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
     input[type="text"] {
       padding: 10px;
@@ -44,8 +50,8 @@
       outline: none;
     }
     .whatsapp-share {
+      display: none;
       margin-top: 20px;
-      display: inline-block;
       padding: 12px 24px;
       background: #25d366;
       border-radius: 30px;
@@ -73,21 +79,39 @@
   <!-- Greeting Image -->
   <img src="ganesha-rakhi.png" alt="Ganesh Raksha Bandhan Wishes" class="greeting-image" />
 
-  <!-- ✅ Ad Script (Below Image) -->
-    <script async="async" data-cfasync="false" src="//pl27122862.profitableratecpm.com/37c117dd428df5727655e56d292ed1c7/invoke.js"></script>
-<div id="container-37c117dd428df5727655e56d292ed1c7"></div>
-  <!-- Name Entry & Share Button -->
-  <div class="name-box">
+  <!-- Ad Block (optional) -->
+  <div style="text-align: center; margin: 20px 0;">
+    <script type='text/javascript' src='https://www.profitableratecpm.com/mpis79pimg?key=2098ff8133dd140d21dc23834535d2f3'></script>
+  </div>
+
+  <!-- Name Entry Box (after 6 seconds) -->
+  <div id="popup" class="popup-box">
     <input type="text" id="userName" placeholder="अपना नाम दर्ज करें" />
     <br><br>
     <a id="shareBtn" href="#" class="whatsapp-share" target="_blank">शेयर करें</a>
   </div>
 
-  <!-- Share Script -->
+  <!-- JavaScript Logic -->
   <script>
-    document.getElementById("shareBtn").addEventListener("click", function (e) {
-      e.preventDefault(); // prevent anchor behavior
-      const name = document.getElementById("userName").value.trim();
+    // Show popup after 6 seconds
+    setTimeout(function () {
+      document.getElementById("popup").style.display = "block";
+    }, 6000);
+
+    const shareBtn = document.getElementById("shareBtn");
+    const userName = document.getElementById("userName");
+
+    userName.addEventListener("input", function () {
+      if (userName.value.trim().length > 0) {
+        shareBtn.style.display = "inline-block";
+      } else {
+        shareBtn.style.display = "none";
+      }
+    });
+
+    shareBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      const name = userName.value.trim();
       if (name.length > 0) {
         const siteLink = window.location.href;
         const message = encodeURIComponent(`${name} ने आपको रक्षाबंधन की शुभकामनाएं भेजी हैं! 🌸✨\n${siteLink}`);
